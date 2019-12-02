@@ -20,8 +20,8 @@
 
 - name: Add nodesource apt repository to install NodeJs
   apt_repository:
-    repo: deb https://deb.nodesource.com/setup_12.x buster main
-    state: absent
+    repo: deb https://deb.nodesource.com/node_12.x buster main
+    state: present
     filename: nodesource
 
 - name: Upgrade all packages
