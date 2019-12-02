@@ -12,10 +12,16 @@
   apt_key:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
 
-- name: Add nodesource apt repository to install NodeJs
+- name: Remove old Nodejs repository
   apt_repository:
     repo: deb https://deb.nodesource.com/node_8.x stretch main
-    state: present
+    state: absent
+    filename: nodesource
+
+- name: Add nodesource apt repository to install NodeJs
+  apt_repository:
+    repo: deb https://deb.nodesource.com/setup_12.x buster main
+    state: absent
     filename: nodesource
 
 - name: Upgrade all packages
