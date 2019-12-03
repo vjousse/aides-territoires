@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3f5eb38cf2fa01e7505a7d246969ebda600f7b1ff1fbbd28d8da3b363e1e51cb"
+            "sha256": "13b073765fe6e89b6fed3d0e7ec6e60e40fda6d784af750b0719bc192fc680bb"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -223,12 +223,9 @@
             "version": "==0.1.0"
         },
         "django-xworkflows": {
-            "hashes": [
-                "sha256:4054382e87f844d92ea5af16c3bb58cf659cc1df9e706d880ec3bb9c0a9affed",
-                "sha256:48adfd811ca2f0420ce08c3c2d16326fb23033ef1c8186b373b58d5466492d5f"
-            ],
-            "index": "pypi",
-            "version": "==0.12.3"
+            "editable": true,
+            "git": "https://github.com/thibault/django_xworkflows.git",
+            "ref": "7c986ce14ef7bdd093f56a37985a29eed65a40c3"
         },
         "djangorestframework": {
             "hashes": [

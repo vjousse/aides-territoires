@@ -17,11 +17,11 @@ django-rest-framework = "*"
 xlrd = "*"
 celery = "*"
 django-braces = "*"
-django-xworkflows = "*"
 beautifulsoup4 = "*"
 scrapy = "*"
 django-pagedown = "*"
 markdown = "*"
+django-xworkflows = {ref = "django30_compat",git = "https://github.com/thibault/django_xworkflows.git",editable = true}
 
 [dev-packages]
 pytest = "*"
