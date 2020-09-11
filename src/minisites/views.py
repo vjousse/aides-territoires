@@ -2,6 +2,7 @@ from django.http import QueryDict, HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.contrib.sites.models import Site
 
+from analytics.utils import track_custom_variable
 from search.models import SearchPage
 from aids.views import SearchView, AdvancedSearchView, AidDetailView
 from alerts.views import AlertCreate
@@ -74,6 +75,9 @@ class MinisiteMixin:
         context = super().get_context_data(**kwargs)
         context['search_page'] = self.search_page
         context['site_url'] = self.request.build_absolute_uri('').rstrip('/')
+        context.update({
+            **track_custom_variable(1, 'minisite', self.search_page.slug)
+        })
         return context
 
 
