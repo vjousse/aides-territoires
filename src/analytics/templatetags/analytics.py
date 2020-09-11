@@ -29,6 +29,13 @@ def analytics_goalid(context):
     return goalid
 
 
+@register.simple_tag(takes_context=True)
+def analytics_custom_variable(context):
+
+    custom_variable = context.get('analytics_custom_variable', None)
+    return custom_variable
+
+
 @register.simple_tag
 def hotjar_siteid():
     return settings.HOTJAR_SITEID

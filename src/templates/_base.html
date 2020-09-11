@@ -67,7 +67,6 @@
             // Piwik variables
             var _paq = _paq || [];
             _paq.push(["setDomains", ["*.aides-territoires.beta.gouv.fr"]]);
-            _paq.push(['trackPageView']);
             _paq.push(['enableLinkTracking']);
             _paq.push(['setTrackerUrl', 'https://stats.data.gouv.fr/piwik.php']);
             _paq.push(['setSiteId', '{% analytics_siteid %}']);
@@ -79,16 +78,50 @@
         {% block extra_js %}{% endblock %}
 
         {% analytics_enabled as analytics_enabled %}
-        {% analytics_goalid as analytics_goalid %}
         {% if analytics_enabled %}
+
+            {% analytics_goalid as analytics_goalid %}
             {% if analytics_goalid %}
                 <script type="text/javascript">
+                    // Goal conversion tracking
                     _paq.push(['trackGoal', {{ analytics_goalid }}]);
                 </script>
             {% endif %}
+
+            {% analytics_custom_variable as analytics_variable %}
+            {% if analytics_variable %}
+                <script type="text/javascript">
+                    // Tracking of custom variables
+                    _paq.push([
+                        'setCustomVariable',
+                        {{ analytics_variable.index }},
+                        '{{ analytics_variable.name }}',
+                        '{{ analytics_variable.value }}',
+                        'visit',
+                    ]);
+                </script>
+            {% endif %}
+
+            <script>
+                _paq.push(['trackPageView']);
+            </script>
             <script src="https://stats.data.gouv.fr/piwik.js" async defer></script>
             <noscript><img src="https://stats.data.gouv.fr/piwik.php?idsite={% analytics_siteid %}&idgoal={{ analytics_goalid }}" style="border:0;" alt="" /></noscript>
             <script src="/static/js/analytics/hotjar_tag.js"></script>
+        {% endif %}
+
+        {% analytics_custom_variable as analytics_variable %}
+        {% if analytics_variable %}
+            <script type="text/javascript">
+                // Tracking of custom variables
+                _paq.push([
+                    'setCustomVariable',
+                    {{ analytics_variable.index }},
+                    '{{ analytics_variable.name }}',
+                    '{{ analytics_variable.value }}',
+                    'visit',
+                ]);
+            </script>
         {% endif %}
     </body>
 </html>
