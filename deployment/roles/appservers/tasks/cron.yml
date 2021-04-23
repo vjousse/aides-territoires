@@ -36,6 +36,7 @@
 - name: Install the daily ademe data import task
   cron:
     name: Import data from the ademe's feed
+    state: absent
     user: "{{ user_name }}"
     minute: "42"
     hour: "2"
@@ -45,6 +46,7 @@
 - name: Install the alert sending task
   cron:
     name: Send alert emails
+    state: absent
     user: "{{ user_name }}"
     minute: "42"
     hour: "3"
@@ -54,6 +56,7 @@
 - name: Install the task for exporting contacts to Sending Blue
   cron:
     name: Export contacts
+    state: absent
     user: "{{ user_name }}"
     minute: "42"
     hour: "5"
