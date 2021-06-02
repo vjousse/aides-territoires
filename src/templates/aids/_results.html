@@ -49,11 +49,22 @@
         {% endif %}
         {% endif %}
     {% endfor %}
-    </div>
 {% else %}
     <div class="empty-result">
         <p class="warning">{{ _('We could not find any results.') }}</p>
     </div>
+{% endif %}
+{% if aids_associated_to_the_project_categories %}
+<div>
+    <p>Nous vous conseillons d'élargir votre recherche</p>
+    <div class="aids">
+        {% for aid2 in aids_associated_to_the_project_categories %}
+            <div class="col">
+                {% include 'aids/_aid_result.html' with aid=aid2 %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endif %}
 
 {% include '_pagination.html' %}

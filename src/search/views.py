@@ -88,6 +88,12 @@ class CategorySearch(SearchMixin, FormView):
         return context
 
 
+class ChoiceSearch(PerimeterSearch):
+    """Step Intermediate of the multi-page search form."""
+
+    template_name = 'search/step_choice.html'
+
+
 class ProjectSearch(SearchMixin, FormView):
     """Step 5 of the multi-page search form."""
 
@@ -107,16 +113,8 @@ class ProjectSearch(SearchMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        categories = self.request.GET.getlist('categories', [])
-
-        category_id = Category.objects \
-            .filter(slug__in=categories) \
-            .values('id') \
-            .distinct()
-
         context['project_choices'] = Project.objects \
             .filter(status='published') \
-            .filter(categories__in=category_id) \
             .distinct()
 
         '''

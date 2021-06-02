@@ -19,7 +19,7 @@
 {% block content %}
 <h1>{{ _('Your territory') }}</h1>
 
-<form id="perimeter" action="{% url 'search_step_theme' %}" method="GET">
+<form id="perimeter" action="{% url 'search_choice_step' %}" method="GET">
 
     {% include '_form_snippet.html' %}
 
@@ -32,7 +32,7 @@
             {{ _('Back to previous step') }}
         </a>
 
-        <a class="next-btn" href="{% url 'search_step_theme' %}?{{ querystring }}">
+        <a class="next-btn" href="{% url 'search_choice_step' %}?{{ querystring }}">
             {{ _('Skip to the next step') }}
         </a>
     </div>

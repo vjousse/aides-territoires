@@ -1769,6 +1769,37 @@ span.softmaxlength-counter {
     }
 }
 
+div#step_choice {
+
+    .research_choice {
+        li {
+            @include icon(before, $fa-var-arrow-right);
+            color: $dark-green;
+            list-style: none;
+            @extend .pb-4;
+
+            a {
+                color: #fff !important;
+            }
+        }        
+    }
+
+    .btn {
+        @extend .btn-primary;
+        display: inline-block;
+    }
+
+    div.navigation-links {
+        display: inline-block;
+        margin-top: 1.5rem;
+
+        a {
+            color: white;
+            margin-right: 1rem;
+            opacity: 0.85;
+        }
+    }
+}
 
 div#search-steps {
     p.steps {

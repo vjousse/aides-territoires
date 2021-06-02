@@ -1,0 +1,66 @@
+{% extends '_base.html' %}
+{% load compress %}
+
+{% block extratitle %}Recherche - Modalité de recherche{% endblock %}
+
+{% block sectionid %}search-steps{% endblock %}
+
+{% block breadcrumbs %}
+<div class="search-progress">
+<p class="steps">
+    {% include 'search/_breadcrumb.html' with label='La structure' %}
+    {% include 'search/_breadcrumb.html' with label='Le territoire' %}
+    {% include 'search/_breadcrumb.html' with label='Les thématiques' counter=3 %}
+    {% include 'search/_breadcrumb.html' with label='Les sous-thématiques' counter=4 %}
+</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<h1>Quel type de recherche souhaitez-vous effectuer&nbsp;?</h1>
+<div id="step_choice">
+        <div>
+            <p>Pour continuer votre recherche Aides-territoires vous propose deux possibilités&nbsp;:</p>
+            <ul class="research_choice">
+                <li>
+                    <a href="{% url 'search_step_theme' %}?{{ querystring }}">
+                    Rechercher des aides par thématiques
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'search_step_project' %}?{{ querystring }}" title="Uniquement pour les projets relatifs à l'urbanisme, au logement et à l'aménagement">
+                        Rechercher des aides pour un projet
+                    </a>
+                </li>
+            </ul>
+            <div class="warning">
+                <p>La recherche par projet est actuellement une bêta fonctionnalité ouverte uniquement pour les projets relatifs à l'urbanisme, au logement et à l'aménagement.</p>
+            </div>
+        </div>
+
+    <div class="navigation-links">
+        <a class="previous-btn" href="{% url 'search_step_project' %}?{{ querystring }}">
+            {{ _('Back to previous step') }}
+        </a>
+
+        <a class="next-btn" href="{% url 'search_step_theme' %}?{{ querystring }}">
+            {{ _('Skip to the next step') }}
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+{% compress css %}
+<link rel="stylesheet" href="/static/css/select2.scss" type="text/x-scss" charset="utf-8">
+{% endcompress %}
+{% endblock %}
+
+{% block extra_js %}
+{% compress js %}
+<script src="/static/select2/dist/js/select2.js"></script>
+<script src="/static/select2/dist/js/i18n/fr.js"></script>
+<script src="/static/js/aids/perimeter_autocomplete.js"></script>
+<script src="/static/js/search/track_perimeter_step_events.js"></script>
+{% endcompress %}
+{% endblock %}
