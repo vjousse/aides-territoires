@@ -48,6 +48,7 @@ THIRD_PARTY_APPS = [
     'django_celery_beat',
     'adminsortable2',
     'fieldsets_with_inlines',
+    'leaflet',
 ]
 
 LOCAL_APPS = [
@@ -76,6 +77,7 @@ LOCAL_APPS = [
     'blog',
     'eligibility',
     'admin_lite',
+    'perimeters',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
