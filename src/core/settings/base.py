@@ -77,6 +77,7 @@ LOCAL_APPS = [
     'blog',
     'eligibility',
     'admin_lite',
+    'organizations',
 
     # deprecated apps
     'tags',
