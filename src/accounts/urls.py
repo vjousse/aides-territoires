@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 from accounts.forms import LoginForm
 from accounts.views import (PasswordResetView, PasswordResetSentView,
                             TokenLoginView, RegisterView, RegisterSuccessView,
-                            ContributorProfileView)
+                            ContributorProfileView, UserDashboardView)
 
 urlpatterns = [
     path(_('register/'), RegisterView.as_view(), name='register'),
@@ -27,6 +27,9 @@ urlpatterns = [
 
     path(_('contributor-profile/'), ContributorProfileView.as_view(),
          name='contributor_profile'),
+
+    path(_('user-dashboard/'), UserDashboardView.as_view(),
+         name='user_dashboard'),
 
     path(_('logout/'), auth_views.LogoutView.as_view(), name='logout'),
 ]

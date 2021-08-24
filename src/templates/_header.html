@@ -34,8 +34,10 @@
                     <div class="fr-header__tools-links">
                         {% if user.is_authenticated %}                    
                         <ul class="fr-links-group">
-                            <li class="fr-link fr-fi-account-line" id="profil">
-                                {{ user.full_name }}
+                            <li>
+                                <a class="fr-link fr-fi-account-line" id="profil" href="{% url 'user_dashboard' %}">
+                                    {{ user.full_name }}
+                                </a>
                             </li>
                             <li>
                                 <a class="fr-link" href="{% url 'logout' %}">

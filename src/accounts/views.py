@@ -128,3 +128,9 @@ class ContributorProfileView(ContributorRequiredMixin, SuccessMessageMixin, Upda
         res = super().form_valid(form)
         update_session_auth_hash(self.request, self.object)
         return res
+
+
+class UserDashboardView(TemplateView):
+    """User Dashboard"""
+
+    template_name = 'accounts/user_dashboard.html'
